@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 19:09:44 by pbrochar          #+#    #+#             */
-/*   Updated: 2020/11/18 19:09:49 by pbrochar         ###   ########.fr       */
+/*   Updated: 2020/11/18 21:45:04 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ t_list	*ft_lstnew(void *content)
 	if (new == NULL)
 		return (NULL);
 	new->content = content;
+	new->next = NULL;
 	return (new);
 }
