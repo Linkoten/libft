@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 19:09:11 by pbrochar          #+#    #+#             */
-/*   Updated: 2020/11/18 19:09:22 by pbrochar         ###   ########.fr       */
+/*   Updated: 2020/11/18 21:39:39 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t			i;
-	unsigned char	*ps;
-
-	ps = (unsigned char *)s;
-	i = 0;
-	while (ps[i] && i < n)
-	{
-		ps[i] = 0;
-		i++;
-	}
+	ft_memset(s, 0, n);
 }
