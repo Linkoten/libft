@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 19:09:12 by pbrochar          #+#    #+#             */
-/*   Updated: 2020/11/18 21:42:55 by pbrochar         ###   ########.fr       */
+/*   Updated: 2020/11/19 18:38:52 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*tab;
 
-	tab = (void *)malloc(sizeof(size) * nmemb);
+	tab = (void *)malloc(size * nmemb);
 	if (tab == NULL)
 		return (NULL);
 	ft_bzero(tab, size * nmemb);
