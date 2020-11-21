@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 19:12:15 by pbrochar          #+#    #+#             */
-/*   Updated: 2020/11/19 20:59:14 by pbrochar         ###   ########.fr       */
+/*   Updated: 2020/11/21 14:50:29 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 	if (!*s2)
 		return ((char *)s1);
 	i = 0;
-	while (s1[i] && n)
+	while (n && s1[i])
 	{
 		j = 0;
 		while (s1[i + j] == s2[j] && n)

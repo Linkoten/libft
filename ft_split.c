@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 19:13:31 by pbrochar          #+#    #+#             */
-/*   Updated: 2020/11/18 19:13:37 by pbrochar         ###   ########.fr       */
+/*   Updated: 2020/11/21 11:51:29 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ static char	*ft_strndup(char *s, int size)
 	return (tab);
 }
 
-int			cmp(char c, char d)
+static int			cmp(char c, char d)
 {
 	if (c == d)
 		return (1);
 	return (0);
 }
 
-int			word_len(char *s, char c)
+static int			word_len(char *s, char c)
 {
 	int a;
 
@@ -50,7 +50,7 @@ int			word_len(char *s, char c)
 	return (a);
 }
 
-int			word_count(char *s, char c)
+static int			word_count(char *s, char c)
 {
 	int i;
 	int wc;
@@ -69,7 +69,7 @@ int			word_count(char *s, char c)
 	return (wc);
 }
 
-char		**ft_split(char *s, char c)
+char				**ft_split(char *s, char c)
 {
 	char	**tab;
 	int		j;
