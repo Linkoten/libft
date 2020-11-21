@@ -6,34 +6,30 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 19:12:15 by pbrochar          #+#    #+#             */
-/*   Updated: 2020/11/21 15:19:21 by pbrochar         ###   ########.fr       */
+/*   Updated: 2020/11/21 17:59:24 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t n)
+char    *ft_strnstr(const char *hay, const char *need, size_t len)
 {
-	int	i;
-	int	j;
+	size_t i;
+	size_t j;
 
-	if (!*s2)
-		return ((char *)s1);
 	i = 0;
-	while (n && s1[i])
+	if (!need[i] || !need)
+		return ((char *)hay);
+	while (hay[i] && i < len)
 	{
 		j = 0;
-		while (s1[i + j] == s2[j] && n)
+		while (j + i < len && need[j] == hay[i + j])
 		{
-			if (!s2[j + 1])
-				return ((char *)&s1[i]);
+			if (!need[j + 1])
+				return ((char *)hay + i);
 			j++;
-			n--;
 		}
-		if (!s1[i])
-			return (NULL);
 		i++;
-		n--;
 	}
 	return (NULL);
 }

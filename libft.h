@@ -6,7 +6,7 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 19:48:22 by pbrochar          #+#    #+#             */
-/*   Updated: 2020/11/20 19:55:18 by pbrochar         ###   ########.fr       */
+/*   Updated: 2020/11/21 17:59:17 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char			*ft_strncat(char *dest, const char *src, size_t n);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strstr(const char *haystack, const char *needle);
-char			*ft_strnstr(const char *s1, const char *s2, size_t n);
+char			*ft_strnstr(const char *hay, const char *nedd, size_t len);
 char			*ft_strdup(const char *s);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
