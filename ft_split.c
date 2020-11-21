@@ -6,13 +6,13 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 19:13:31 by pbrochar          #+#    #+#             */
-/*   Updated: 2020/11/21 11:51:29 by pbrochar         ###   ########.fr       */
+/*   Updated: 2020/11/21 15:48:32 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_strndup(char *s, int size)
+static char			*ft_strndup(char *s, int size)
 {
 	int		i;
 	char	*tab;
