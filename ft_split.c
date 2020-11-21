@@ -6,90 +6,96 @@
 /*   By: pbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 19:13:31 by pbrochar          #+#    #+#             */
-/*   Updated: 2020/11/21 17:59:34 by pbrochar         ###   ########.fr       */
+/*   Updated: 2020/11/21 18:01:24 by pbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char			*ft_strndup(char *s, int size)
+static char        *ft_strndup(char const *s, int n)
 {
-	int		i;
-	char	*tab;
+    int        i;
+    char    *dup;
 
-	i = 0;
-	while (s[i] && i < size)
-		i++;
-	tab = (char *)malloc(sizeof(char) * size);
-	if (tab == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i] && i < size)
-	{
-		tab[i] = s[i];
-		i++;
-	}
-	tab[i] = '\0';
-	return (tab);
+    i = 0;
+    while (s[i] && i < n)
+        i++;
+    if (!(dup = (char*)malloc((i + 1) * sizeof(char))))
+        return (0);
+    i = 0;
+    while (s[i] && i < n)
+    {
+        dup[i] = s[i];
+        i++;
+    }
+    dup[i] = '\0';
+    return (dup);
 }
 
-static int			cmp(char c, char d)
+static int        count_words(char const *s, char c)
 {
-	if (c == d)
-		return (1);
-	return (0);
+    int words;
+    int i;
+
+    words = 0;
+    i = 0;
+    while (s[i])
+    {
+        if (!s[i + 1] || (s[i] == c && s[i + 1] != c) ||
+                (s[i + 1] == c && !s[i + 1]))
+            words++;
+        i++;
+    }
+    if (words == 0)
+        words++;
+    return (words);
 }
 
-static int			word_len(char *s, char c)
+static int        len_stop(char const *s, char c)
 {
-	int a;
+    int i;
 
-	a = 0;
-	while (!(cmp(c, s[a])) && s[a])
-		a++;
-	return (a);
+    i = 0;
+    while (c != s[i] && s[i])
+        i++;
+    return (i);
 }
 
-static int			word_count(char *s, char c)
+static void        *free_tab(char **tab)
 {
-	int i;
-	int wc;
+    size_t i;
 
-	wc = 0;
-	i = 0;
-	while (s[i])
-	{
-		if ((cmp(c, s[i]) && !cmp(c, s[i + 1]))
-				|| (!cmp(c, s[i]) && !s[i + 1]) || !s[i + 1])
-			wc++;
-		i++;
-	}
-	if (wc == 0)
-		return (1);
-	return (wc);
+    i = 0;
+    while (tab[i])
+        free(tab[i++]);
+    free(tab);
+    return (NULL);
 }
 
-char				**ft_split(char *s, char c)
+char            **ft_split(char const *s, char c)
 {
-	char	**tab;
-	int		j;
-	int		i;
+    int        i;
+    int        j;
+    char    **split;
 
-	tab = (char **)malloc(sizeof(char *) * (word_count(s, c) + 1));
-	if (tab == NULL)
-		return (NULL);
-	j = 0;
-	i = 0;
-	while (j < word_count(s, c) && s[i])
-	{
-		while (cmp(c, s[i]) && s[i])
-			i++;
-		if (!s[i])
-			break ;
-		tab[j] = ft_strndup(&s[i], word_len(&s[i], c));
-		j++;
-		i += word_len(&s[i], c);
-	}
-	tab[j] = 0;
-	return (tab);
+    i = 0;
+    j = 0;
+    if (!s)
+        return (NULL);
+    if (!(split = (char**)malloc((count_words(s, c) + 1) * sizeof(char *))))
+        return (NULL);
+    while (j < count_words(s, c))
+    {
+        while (s[i] == c && s[i])
+            i++;
+        if (!s[i])
+            break ;
+        split[j] = ft_strndup(&s[i], len_stop(&s[i], c));
+        if (!split[j])
+            return (free_tab(split));
+        j++;
+        i += len_stop(&s[i], c);
+    }
+    split[j] = 0;
+    return (split);
 }
